@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ikigai/widgets/ikigaiEN.dart';
 import 'package:ikigai/widgets/ikigaiLogo.dart';
+import 'package:video_player/video_player.dart';
 
 class HomePageDesktop extends StatefulWidget {
   const HomePageDesktop({Key? key}) : super(key: key);
@@ -11,17 +12,19 @@ class HomePageDesktop extends StatefulWidget {
 }
 
 class _HomePageDesktopState extends State<HomePageDesktop> {
-  List _isHovering = [false, false, false, false, false, false];
+  final List _isHovering = [false, false, false, false, false, false];
+
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     var theme = Theme.of(context);
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
         preferredSize: Size(screenSize.width, 70),
         child: Container(
-          color: Theme.of(context).primaryColor.withOpacity(0.5),
+          color: Theme.of(context).primaryColor.withOpacity(0.0),
           child: Padding(
             padding:
                 const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
@@ -290,44 +293,11 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
       body: ListView(children: [
         Stack(
           children: [
-            Container(
-              height: 600.0,
-              color: theme.primaryColor,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    //width: screenSize.width * 0.5,
-                    child: Image.asset(
-                      'assets/images/raster/tree_branches.png',
-                      fit: BoxFit.fitWidth,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: const [
-                        Text(
-                          "Help this world be a better place",
-                          style: TextStyle(
-                              fontSize: 36.0,
-                              fontFamily: "NotoSansJP",
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          "Give clothes a new life",
-                          style: TextStyle(
-                            fontSize: 48.0,
-                            fontFamily: "NotoSansJP",
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
+            SizedBox(
+              width: screenSize.width,
+              height: 500.0,
+              child:
+                  const AspectRatio(aspectRatio: 0.5, child: BackgroundVideo()),
             ),
             Center(
                 heightFactor: 1,
@@ -346,7 +316,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                           padding: const EdgeInsets.all(10.0),
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
+                              children: const [
                                 Text(
                                   "Men",
                                   style: TextStyle(
@@ -370,5 +340,39 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
         ),
       ]),
     );
+  }
+}
+
+class BackgroundVideo extends StatefulWidget {
+  const BackgroundVideo({Key? key}) : super(key: key);
+
+  @override
+  State<BackgroundVideo> createState() => _BackgroundVideoState();
+}
+
+class _BackgroundVideoState extends State<BackgroundVideo> {
+  VideoPlayerController _controller =
+      VideoPlayerController.asset("assets/videos/background.mp4");
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // ignore: avoid_single_cascade_in_expression_statements
+    _controller = VideoPlayerController.asset("assets/videos/background.mp4")
+      ..initialize().then((value) => {setState(() {})});
+    _controller.setLooping(true);
+    _controller.setVolume(0.0);
+    _controller.play();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return VideoPlayer(_controller);
   }
 }
