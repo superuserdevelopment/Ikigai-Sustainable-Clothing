@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ikigai/pages/home.dart';
+import 'package:ikigai/widgets/ikigaiEN.dart';
+import 'package:ikigai/widgets/ikigaiJP.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,19 +15,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ikigai-Sustainable Clothing',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primaryColor: const Color(0xFF9dd0e1),
+        primaryColorLight: const Color(0xFFc3d898),
+        primaryColorDark: Color.fromARGB(255, 59, 73, 51),
+        highlightColor: const Color(0xFF70161E),
+        backgroundColor: const Color(0xFFFFFF),
+        fontFamily: "NotoSansJP",
         primarySwatch: Colors.green,
       ),
-      home: const MyHomePage(title: 'Ikigai-Sustainable Clothing'),
+      home: const HomePage(),
     );
   }
 }
@@ -95,9 +97,8 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
+            ikigaiJP(),
+            ikigaiEN(),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
