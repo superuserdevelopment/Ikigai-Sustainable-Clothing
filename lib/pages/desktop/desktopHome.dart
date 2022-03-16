@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ikigai/widgets/ikigaiEN.dart';
 import 'package:ikigai/widgets/ikigaiLogo.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:video_player/video_player.dart';
 
 class HomePageDesktop extends StatefulWidget {
@@ -24,7 +24,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
       appBar: PreferredSize(
         preferredSize: Size(screenSize.width, 70),
         child: Container(
-          color: Theme.of(context).primaryColor.withOpacity(0.0),
+          color: Theme.of(context).backgroundColor.withOpacity(0.7),
           child: Padding(
             padding:
                 const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
@@ -37,6 +37,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         InkWell(
+                          hoverColor: Colors.white.withOpacity(0.0),
                           onTap: () {},
                           onHover: (value) {
                             setState(() {
@@ -47,7 +48,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                             'Shop',
                             style: TextStyle(
                                 color: _isHovering[0]
-                                    ? Colors.white
+                                    ? theme.primaryColor
                                     : Colors.black),
                           ),
                         ),
@@ -61,7 +62,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                           child: Container(
                             height: 2,
                             width: 30,
-                            color: Colors.white,
+                            color: theme.primaryColor,
                           ),
                         )
                       ],
@@ -73,6 +74,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         InkWell(
+                          hoverColor: Colors.white.withOpacity(0.0),
                           onTap: () {},
                           onHover: (value) {
                             setState(() {
@@ -83,7 +85,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                             'Collaboration',
                             style: TextStyle(
                                 color: _isHovering[1]
-                                    ? Colors.white
+                                    ? theme.primaryColor
                                     : Colors.black),
                           ),
                         ),
@@ -97,7 +99,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                           child: Container(
                             height: 2,
                             width: 30,
-                            color: Colors.white,
+                            color: theme.primaryColor,
                           ),
                         )
                       ],
@@ -109,6 +111,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         InkWell(
+                          hoverColor: Colors.white.withOpacity(0.0),
                           onTap: () {},
                           onHover: (value) {
                             setState(() {
@@ -119,7 +122,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                             'Sale',
                             style: TextStyle(
                                 color: _isHovering[2]
-                                    ? Colors.white
+                                    ? theme.primaryColor
                                     : theme.highlightColor),
                           ),
                         ),
@@ -133,7 +136,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                           child: Container(
                             height: 2,
                             width: 30,
-                            color: Colors.white,
+                            color: theme.primaryColor,
                           ),
                         )
                       ],
@@ -150,7 +153,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                           CupertinoIcons.search,
                           size: 16.0,
                           color: _isHovering[3]
-                              ? Colors.white
+                              ? theme.primaryColor
                               : theme.highlightColor,
                         ),
                         const SizedBox(
@@ -160,6 +163,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             InkWell(
+                              hoverColor: Colors.white.withOpacity(0.0),
                               onTap: () {},
                               onHover: (value) {
                                 setState(() {
@@ -170,7 +174,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                                 'Search',
                                 style: TextStyle(
                                     color: _isHovering[3]
-                                        ? Colors.white
+                                        ? theme.primaryColor
                                         : theme.highlightColor),
                               ),
                             ),
@@ -182,7 +186,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                               child: Container(
                                 height: 2,
                                 width: 30,
-                                color: Colors.white,
+                                color: theme.primaryColor,
                               ),
                             ),
                           ],
@@ -197,7 +201,9 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                         Icon(
                           CupertinoIcons.heart_fill,
                           size: 16.0,
-                          color: _isHovering[4] ? Colors.white : Colors.black,
+                          color: _isHovering[4]
+                              ? theme.primaryColor
+                              : Colors.black,
                         ),
                         const SizedBox(
                           width: 5.0,
@@ -206,6 +212,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             InkWell(
+                              hoverColor: Colors.white.withOpacity(0.0),
                               onTap: () {},
                               onHover: (value) {
                                 setState(() {
@@ -216,7 +223,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                                 'Favorites',
                                 style: TextStyle(
                                     color: _isHovering[4]
-                                        ? Colors.white
+                                        ? theme.primaryColor
                                         : Colors.black),
                               ),
                             ),
@@ -228,7 +235,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                               child: Container(
                                 height: 2,
                                 width: 30,
-                                color: Colors.white,
+                                color: theme.primaryColor,
                               ),
                             ),
                           ],
@@ -243,7 +250,9 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                         Icon(
                           CupertinoIcons.profile_circled,
                           size: 16.0,
-                          color: _isHovering[5] ? Colors.white : Colors.black,
+                          color: _isHovering[5]
+                              ? theme.primaryColor
+                              : Colors.black,
                         ),
                         const SizedBox(
                           width: 5.0,
@@ -252,6 +261,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             InkWell(
+                              hoverColor: Colors.white.withOpacity(0.0),
                               onTap: () {},
                               onHover: (value) {
                                 setState(() {
@@ -262,7 +272,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                                 'Profile',
                                 style: TextStyle(
                                     color: _isHovering[5]
-                                        ? Colors.white
+                                        ? theme.primaryColor
                                         : Colors.black),
                               ),
                             ),
@@ -274,7 +284,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                               child: Container(
                                 height: 2,
                                 width: 30,
-                                color: Colors.white,
+                                color: theme.primaryColor,
                               ),
                             ),
                           ],
@@ -335,9 +345,111 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                               ]),
                         ),
                       ),
-                    )))
+                    ))),
           ],
         ),
+        Center(
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 50.0, horizontal: 30.0),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                    "2,000",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 200.0,
+                        letterSpacing: 10.0,
+                        fontFamily: "NotoSerif"),
+                  ),
+                  const Text(
+                    "gallons of water is required to produce a single pair of jeans",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 24.0, fontFamily: "Circular"),
+                  ),
+                  const SizedBox(
+                    height: 40.0,
+                  ),
+                  const Text(
+                    "to put it in perspective, that is equal to",
+                    textAlign: TextAlign.center,
+                    style:
+                        TextStyle(fontSize: 24.0, fontStyle: FontStyle.italic),
+                  ),
+                  // Padding(
+                  //     padding: const EdgeInsets.symmetric(
+                  //         vertical: 20.0, horizontal: 30.0),
+                  //     child: SizedBox(
+                  //       width: 1000.0,
+                  //       child: Image.asset(
+                  //           "assets/images/raster/plastic-bottle-grid.png"),
+                  //     )),
+                  const Text(
+                    "7,500",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 200.0,
+                      fontFamily: "NotoSerif",
+                      letterSpacing: 10.0,
+                    ),
+                  ),
+                  const Text(
+                    "bottles of drinking water",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 24.0, fontFamily: "Circular"),
+                  ),
+                  const SizedBox(
+                    height: 60.0,
+                  ),
+                  const Text(
+                    "or",
+                    textAlign: TextAlign.center,
+                    style:
+                        TextStyle(fontSize: 24.0, fontStyle: FontStyle.italic),
+                  ),
+                  const Text(
+                    "5 years",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 200.0,
+                      fontFamily: "NotoSerif",
+                      letterSpacing: 10.0,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  const Text(
+                    "worth of drinking water for an average person",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 24.0, fontFamily: "Circular"),
+                  ),
+                  const SizedBox(
+                    height: 60.0,
+                  ),
+                  LoadingAnimationWidget.waveDots(
+                      color: Colors.black, size: 200.0),
+                  const Text(
+                    "let that sink in...",
+                    textAlign: TextAlign.center,
+                    style:
+                        TextStyle(fontSize: 24.0, fontStyle: FontStyle.italic),
+                  ),
+                  const SizedBox(
+                    height: 60.0,
+                  ),
+                  const Text(
+                    "What can you do about it?",
+                    style: TextStyle(
+                      fontSize: 100.0,
+                      fontFamily: "NotoSerif",
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ]),
+          ),
+        )
       ]),
     );
   }

@@ -24,7 +24,6 @@ class MyApp extends StatelessWidget {
         highlightColor: const Color(0xFF70161E),
         backgroundColor: const Color(0xFFFFFF),
         fontFamily: "NotoSansJP",
-        primarySwatch: Colors.green,
       ),
       home: const HomePage(),
     );

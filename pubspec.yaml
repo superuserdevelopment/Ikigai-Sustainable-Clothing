@@ -35,6 +35,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   video_player: ^2.3.0
+  flutter_svg: ^1.0.3
+  loading_animation_widget:
 
 dev_dependencies:
   flutter_test:
@@ -61,6 +63,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/raster/tree_branches.png
+    - assets/images/raster/plastic-bottle-grid.png
+    - assets/images/vector/plastic-bottle-grid.svg
     - assets/videos/background.mp4
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -77,6 +81,9 @@ flutter:
     - family: NotoSansJP
       fonts:
         - asset: assets/fonts/NotoSansJP.otf
+    - family: Circular
+      fonts:
+        - asset: assets/fonts/circularBold.ttf    
     - family: NotoSerif
       fonts:
         - asset: assets/fonts/NotoSerifDisplay/NotoSerifDisplay.ttf
