@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ikigai/pages/desktop/our_story_page.dart';
 import 'package:ikigai/pages/home.dart';
+import 'package:ikigai/pages/our_story_page_wrapper.dart';
 import 'package:ikigai/widgets/ikigaiEN.dart';
 import 'package:ikigai/widgets/ikigaiJP.dart';
 
@@ -25,6 +27,10 @@ class MyApp extends StatelessWidget {
         backgroundColor: const Color(0xFFFFFF),
         fontFamily: "NotoSansJP",
       ),
+      routes: <String, WidgetBuilder>{
+        '/home': (BuildContext context) => HomePage(),
+        '/ourstorypage': (BuildContext context) => OurStoryPageWrapper(),
+      },
       home: const HomePage(),
     );
   }
