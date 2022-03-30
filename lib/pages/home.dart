@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ikigai/pages/desktop/desktopHome.dart';
+import 'package:ikigai/pages/mobile/mobileHomePage.dart';
 import 'package:ikigai/widgets/ikigaiEN.dart';
 import 'package:ikigai/widgets/ikigaiJP.dart';
 
@@ -14,6 +15,8 @@ class HomePage extends StatefulWidget {
 class HomePage_State extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return HomePageDesktop();
+    return MediaQuery.of(context).size.width < 720.0
+        ? const MobileHomePage()
+        : const HomePageDesktop();
   }
 }

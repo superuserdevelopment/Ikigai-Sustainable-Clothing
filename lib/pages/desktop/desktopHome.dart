@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ikigai/models/itemData.dart';
 import 'package:ikigai/widgets/ikigaiLogo.dart';
 import 'package:ikigai/widgets/itemCard.dart';
 import 'package:ikigai/widgets/itemsCarousel.dart';
@@ -16,76 +17,23 @@ class HomePageDesktop extends StatefulWidget {
 
 class _HomePageDesktopState extends State<HomePageDesktop> {
   final List _isHovering = [false, false, false, false, false, false];
+  List<Item> itemList = List.empty(growable: true);
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ItemData data = ItemData();
+    itemList = data.itemList;
+
+    itemList.shuffle();
+    itemList = itemList.sublist(0, 9);
+  }
 
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     var theme = Theme.of(context);
-    Item itemTest = Item(
-        "MXXX123563",
-        "Oversized Fit Cotton T-shirt",
-        "https://lp2.hm.com/hmgoepprod?set=source[/fa/c2/fac298b18bb28d11153894a6b812d9b1c3f378b8.jpg],origin[dam],category[],type[DESCRIPTIVESTILLLIFE],res[y],hmver[2]&call=url[file:/product/main]",
-        0,
-        20.99);
-    Item itemTest1 = Item(
-        "MXXX123563",
-        "Oversized Fit Corduroy Overshirt",
-        "https://lp2.hm.com/hmgoepprod?set=source[/09/70/0970adfc1f6d2efcf0d47366168c3eab144f5bdf.jpg],origin[dam],category[],type[DESCRIPTIVESTILLLIFE],res[y],hmver[2]&call=url[file:/product/main]",
-        0,
-        34.99);
-    Item itemTest2 = Item(
-        "MXXX123563",
-        "Relaxed Fit Fleece Jacket",
-        "https://lp2.hm.com/hmgoepprod?set=source[/75/24/75242b2557770b08724842c74192939825daae65.jpg],origin[dam],category[],type[DESCRIPTIVESTILLLIFE],res[y],hmver[2]&call=url[file:/product/main]",
-        0,
-        49.99);
-    Item itemTest3 = Item(
-        "MXXX123563",
-        "2-pack Regular Fit Cotton Chino Shorts",
-        "https://lp2.hm.com/hmgoepprod?set=source[/ef/49/ef4905a0d1417a14758020ca1159b0d3a7288e6e.jpg],origin[dam],category[],type[DESCRIPTIVESTILLLIFE],res[y],hmver[2]&call=url[file:/product/main]",
-        0,
-        49.99);
-    Item itemTest4 = Item(
-        "MXXX123563",
-        "Regular Fit Cotton Shirt",
-        "https://lp2.hm.com/hmgoepprod?set=source[/69/df/69df76e908063b6b8aeaf70bad6c295c680a0cf7.jpg],origin[dam],category[men_shirts_casual],type[DESCRIPTIVESTILLLIFE],res[y],hmver[2]&call=url[file:/product/main]",
-        0,
-        17.99);
-    Item itemTest5 = Item(
-        "MXXX123563",
-        "Regular Fit Twill Cargo Pants",
-        "https://lp2.hm.com/hmgoepprod?set=source[/e1/c1/e1c16fa71c3dfa3bd3e029a820a25ce0b483fb43.jpg],origin[dam],category[],type[DESCRIPTIVESTILLLIFE],res[y],hmver[2]&call=url[file:/product/main]",
-        0,
-        34.99);
-    Item itemTest6 = Item(
-        "MXXX123563",
-        "Muscle Fit Piqué Polo Shirt",
-        "https://lp2.hm.com/hmgoepprod?set=source[/7f/78/7f78748ac9d5631b1e7b0079fe063010aa745db9.jpg],origin[dam],category[MEN_TSHIRTSTANKS_POLO],type[DESCRIPTIVESTILLLIFE],res[y],hmver[2]&call=url[file:/product/main]",
-        0,
-        14.99);
-    Item itemTest7 = Item(
-        "MXXX123563",
-        "Relaxed Fit Printed Hoodie",
-        "https://lp2.hm.com/hmgoepprod?set=source[/b3/6c/b36c74120838934479ac5450e952be23fa59c6b3.jpg],origin[dam],category[],type[DESCRIPTIVESTILLLIFE],res[y],hmver[2]&call=url[file:/product/main]",
-        0,
-        39.99);
-    Item itemTest8 = Item(
-        "MXXX123563",
-        "Regular Fit Overshirt",
-        "https://lp2.hm.com/hmgoepprod?set=source[/0d/0a/0d0a35af652d00bf06d93fe32de3f7044e477983.jpg],origin[dam],category[men_jacketscoats_shirtjackets],type[DESCRIPTIVESTILLLIFE],res[y],hmver[2]&call=url[file:/product/main]",
-        0,
-        24.99);
-    List<Item> itemList = List.empty(growable: true);
-    itemList.add(itemTest);
-    itemList.add(itemTest1);
-    itemList.add(itemTest2);
-    itemList.add(itemTest3);
-    itemList.add(itemTest4);
-    itemList.add(itemTest5);
-    itemList.add(itemTest6);
-    itemList.add(itemTest7);
-    itemList.add(itemTest8);
-    itemList.shuffle();
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
@@ -105,7 +53,9 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                       children: [
                         InkWell(
                           hoverColor: Colors.white.withOpacity(0.0),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushNamed(context, "/shoppingpage");
+                          },
                           onHover: (value) {
                             setState(() {
                               _isHovering[0] = value;
@@ -395,21 +345,42 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
                           padding: const EdgeInsets.all(10.0),
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: const [
-                                Text(
-                                  "Men",
-                                  style: TextStyle(
-                                      fontSize: 36.0, fontFamily: "NotoSerif"),
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, "/shoppingpagemens");
+                                  },
+                                  child: const Text(
+                                    "Men",
+                                    style: TextStyle(
+                                        fontSize: 36.0,
+                                        fontFamily: "NotoSerif"),
+                                  ),
                                 ),
-                                Text(
-                                  "Women",
-                                  style: TextStyle(
-                                      fontSize: 36.0, fontFamily: "NotoSerif"),
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, "/shoppingpagewomens");
+                                  },
+                                  child: const Text(
+                                    "Women",
+                                    style: TextStyle(
+                                        fontSize: 36.0,
+                                        fontFamily: "NotoSerif"),
+                                  ),
                                 ),
-                                Text(
-                                  "Kids",
-                                  style: TextStyle(
-                                      fontSize: 36.0, fontFamily: "NotoSerif"),
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, "/shoppingpagechildren");
+                                  },
+                                  child: const Text(
+                                    "Kids",
+                                    style: TextStyle(
+                                        fontSize: 36.0,
+                                        fontFamily: "NotoSerif"),
+                                  ),
                                 )
                               ]),
                         ),

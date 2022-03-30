@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:ikigai/pages/desktop/our_story_page.dart';
 import 'package:ikigai/pages/home.dart';
 import 'package:ikigai/pages/our_story_page_wrapper.dart';
+import 'package:ikigai/pages/shopping_page_children_wrapper.dart';
+import 'package:ikigai/pages/shopping_page_mens_wrapper.dart';
+import 'package:ikigai/pages/shopping_page_womens_wrapper.dart';
+import 'package:ikigai/pages/shopping_page_wrapper.dart';
 import 'package:ikigai/widgets/ikigaiEN.dart';
 import 'package:ikigai/widgets/ikigaiJP.dart';
 
@@ -22,14 +26,21 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         primaryColor: const Color(0xFF9dd0e1),
         primaryColorLight: const Color(0xFFc3d898),
-        primaryColorDark: Color.fromARGB(255, 59, 73, 51),
+        primaryColorDark: const Color.fromARGB(255, 59, 73, 51),
         highlightColor: const Color(0xFF70161E),
         backgroundColor: const Color(0xFFFFFF),
         fontFamily: "NotoSansJP",
       ),
       routes: <String, WidgetBuilder>{
-        '/home': (BuildContext context) => HomePage(),
-        '/ourstorypage': (BuildContext context) => OurStoryPageWrapper(),
+        '/home': (BuildContext context) => const HomePage(),
+        '/shoppingpage': (BuildContext context) => const ShoppingPageWrapper(),
+        '/shoppingpagemens': (BuildContext context) =>
+            const ShoppingPageMensWrapper(),
+        '/shoppingpagewomens': (BuildContext context) =>
+            const ShoppingPageWomensWrapper(),
+        '/shoppingpagechildren': (BuildContext context) =>
+            const ShoppingPageChildrenWrapper(),
+        '/ourstorypage': (BuildContext context) => const OurStoryPageWrapper(),
       },
       home: const HomePage(),
     );
